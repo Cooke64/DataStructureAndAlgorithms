@@ -95,3 +95,14 @@ class LinkedList:
         before_node = self.get_by_index(index - 1, services=True)
         before_node.next = node.next
 
+    def reverse_list(self):
+        """built_in функция для разворота списка, с
+        использованием временной переменной"""
+        temp = None
+        current = self.head
+        while current:
+            next = current.next
+            current.next = temp
+            temp = current
+            current = next
+        self.head = temp
