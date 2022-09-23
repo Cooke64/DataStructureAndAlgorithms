@@ -32,7 +32,7 @@ class LinkedList:
             result.append(node.value)
             node = node.next
         result.append('None')
-        return '->'.join(result)
+        return '->'.join([str(i) for i in result])
 
     def __iter__(self):
         node = self.head
@@ -106,3 +106,17 @@ class LinkedList:
             temp = current
             current = next
         self.head = temp
+
+
+def merge_two_list(l1, l2):
+    head = cur = Node(0)
+    while l1 and l2:
+        if l1.value < l2.value:
+            cur.next = l1
+            l1 = l1.next
+        else:
+            cur.next = l2
+            l2 = l2.next
+        cur = cur.next
+    cur.next = l1 or l2
+    return head.next

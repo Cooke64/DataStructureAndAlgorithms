@@ -25,12 +25,30 @@ def find_first_and_last(arr, num):
 
 def bracket_sequence(arr):
     res = []
+    bracket = {')': '(', '}': '{', ']': '['}
     for i in arr:
-        if i in ['(', '{', '[']:
+        if i in bracket.values():
             res.append(i)
-        else:
+        elif res and bracket[i] == res[-1]:
             res.pop()
-    return len(res) == 0
+        else:
+            return False
+    return res == []
 
+"abcabcbb"
+res = 3
+start = 4
 
-print(bracket_sequence(''))
+def lengthOfLongestSubstring(s):
+    dic, res, start, = {}, 0, 0
+    for i, ch in enumerate(s):
+        # when char already in dictionary
+        if ch in dic:
+            # check length from start of string to index
+            res = max(res, i - start)
+            # update start of string index to the next index
+            start = max(start, dic[ch] + 1)
+        # add/update char to/of dictionary
+        dic[ch] = i
+    # answer is either in the begining/middle OR some mid to the end of string
+    return max(res, len(s) - start)
