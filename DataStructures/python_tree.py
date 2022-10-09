@@ -14,8 +14,7 @@ class TreeStore:
         if self.root is None:
             value = data.pop(0)
             self.root = Node(value)
-        for item in data:
-            self.__insert(item, self.root)
+        [self.__insert(item, self.root) for item in data]
 
     def __insert(self, value, root):
         if value < root.data:
@@ -29,7 +28,7 @@ class TreeStore:
             else:
                 root.r = Node(value)
 
-    def insert_value(self, value):
+    def insert_item(self, value):
         if self.root is None:
             self.root = Node(value)
         else:
@@ -45,7 +44,7 @@ class TreeStore:
             print(root.data)
             self.__printer(root.r)
 
-    def find(self, val):
+    def find_item(self, val):
         if self.root is not None:
             return self.__find(val, self.root)
         else:
@@ -58,3 +57,6 @@ class TreeStore:
             return self.__find(val, node.l)
         elif val > node.data and node.r:
             return self.__find(val, node.r)
+
+tree = TreeStore(list(range(20)))
+tree.print_tree()
