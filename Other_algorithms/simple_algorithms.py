@@ -42,6 +42,7 @@ def print_two_array(a: List[int], b: List[int]) -> print:
     Распаковываем кортеж в print поэлементно, вывод через пробел.
     """
     [print(*item, end=' ') for item in zip(a, b)]
+    pass
 
 
 def two_sum(numbers: List[int], find_num: int) -> Optional[int, int]:
@@ -79,3 +80,41 @@ def eratosthenes(n):
         for j in range(num * num, n + 1, num):
             numbers[j] = False
     return numbers
+
+
+def fact(x):
+    if x < 0:
+        return 'Отрицательные числа не считает'
+    if x == 0:
+        return 1
+    return fact(x - 1) * x
+
+
+def gcd(a, b):
+    """Алгоритм Евклида медленный."""
+    if a == b:
+        return a
+    elif a > b:
+        return gcd(a - b, b)
+    else:
+        return gcd(a, b - a)
+
+
+def gcd_2(a, b):
+    """Алгоритм Евклида быстрый."""
+    return a if b == 0 else gcd(b, a % b)
+
+
+def custom_pow(a, b):
+    """Медленное рекуррентное возведение в степень"""
+    return 1 if b == 0 else custom_pow(a, b - 1) * a
+
+
+def custom_pow_2(a, b):
+    """Быстрое рекуррентное возведение в степень"""
+    if b == 0:
+        return 1
+    elif b % 2 == 1:  # Четное значение
+        return custom_pow_2(a, b - 1) * a
+    else:  # Нечетное значение
+        return custom_pow(a ** 2, b // 2)

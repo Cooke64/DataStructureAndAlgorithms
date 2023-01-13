@@ -5,3 +5,4 @@ def insertion_sort(arr):
         while temp > 0 and arr[temp - 1] > arr[temp]:
             arr[temp], arr[temp - 1] = arr[temp - 1], arr[temp]
             temp -= 1
+    return arr

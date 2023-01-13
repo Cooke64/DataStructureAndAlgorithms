@@ -26,6 +26,3 @@ def is_anagram(word_1, word_2):
 
 def is_anagram_v2(word_1, word_2):
     return Counter(word_1) == Counter(word_2)
-
-
-print(is_anagram_v2('мама', "мама"))

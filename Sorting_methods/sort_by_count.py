@@ -11,14 +11,9 @@ def count_sort(arr):
         for index in arr:
             temp_array[index - min_value] += 1
         position = 0
-        for value in range(0, numbers):
+        for value in range(numbers):
             for _ in range(temp_array[value]):
                 arr[position] = value + min_value
                 position += 1
     else:
         raise ValueError('Пустой список!')
-
-
-a = []
-count_sort(a)
-print(a)
