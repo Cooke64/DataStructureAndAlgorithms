@@ -58,5 +58,6 @@ class TreeStore:
         elif val > node.data and node.r:
             return self.__find(val, node.r)
 
+
 tree = TreeStore(list(range(20)))
 tree.print_tree()

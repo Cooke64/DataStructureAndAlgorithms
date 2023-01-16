@@ -25,19 +25,17 @@ def find_first_and_last(arr, num):
 
 def bracket_sequence(arr):
     res = []
-    bracket = {')': '(', '}': '{', ']': '['}
-    for i in arr:
-        if i in bracket.values():
-            res.append(i)
-        elif res and bracket[i] == res[-1]:
+    braces = {')': '(', '}': '{', ']': '['}
+    for brace in arr:
+        if brace in braces.values():
+            res.append(brace)
+        elif res and braces[brace] == res[-1]:
             res.pop()
         else:
             return False
-    return res == []
+    return res
 
-"abcabcbb"
-res = 3
-start = 4
+
 
 def lengthOfLongestSubstring(s):
     dic, res, start, = {}, 0, 0

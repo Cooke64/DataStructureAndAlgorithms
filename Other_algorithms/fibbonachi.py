@@ -6,8 +6,9 @@ def easy_fibonacci(number):
 
 
 def fibonacci(n):
-    if n in (1, 2):
-        return 1
+    fib_dict = {0: 0, 1: 1}
+    if n in fib_dict:
+        return fib_dict[n]
     return fibonacci(n - 1) + fibonacci(n - 2)
 
 
