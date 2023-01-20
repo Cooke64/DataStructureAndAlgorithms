@@ -26,3 +26,9 @@ def simple_gcd(num, prefix=''):
         simple_gcd(num - 1, prefix + '1')
 
 
+def permutation_array(nums: list[int]) -> list[int]:
+    """
+    Дан массив чисел, из которого нужно построить новый, где
+    будет выполняться условие res[i] = nums[nums[i]]
+    """
+    return [nums[nums[index]] for index in range(len(nums))]

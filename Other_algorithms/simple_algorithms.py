@@ -45,6 +45,23 @@ def print_two_array(a: List[int], b: List[int]) -> print:
     pass
 
 
+def max_consecutive_elements(arr):
+    """
+    Моиск максимального элемента в строке.
+    """
+    total = current_res = 0
+    current = arr[0]
+    for i in range(1, len(arr)):
+        letter = arr[i]
+        if letter == current:
+            current_res += 1
+        else:
+            total = max(total, current_res)
+            current_res = 1
+            current = arr[i]
+    return max(total, current_res)
+
+
 def two_sum(numbers: List[int], find_num: int) -> Optional[int, int]:
     """Поиск двух чисел в массиве, сумма которых равна заданному числу.
     Если очередное число, вычтенное из искомого числа имеется в наборе уникальных чисел,

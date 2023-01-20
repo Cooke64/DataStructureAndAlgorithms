@@ -36,17 +36,12 @@ def bracket_sequence(arr):
     return res
 
 
-
-def lengthOfLongestSubstring(s):
-    dic, res, start, = {}, 0, 0
-    for i, ch in enumerate(s):
-        # when char already in dictionary
-        if ch in dic:
-            # check length from start of string to index
-            res = max(res, i - start)
-            # update start of string index to the next index
-            start = max(start, dic[ch] + 1)
-        # add/update char to/of dictionary
-        dic[ch] = i
-    # answer is either in the begining/middle OR some mid to the end of string
-    return max(res, len(s) - start)
+def rle(arr):
+    total = []
+    current = 0
+    for i in range(1, len(arr)):
+        if arr[i] != arr[current]:
+            total.append(f'{i-current}{arr[current]}')
+            current = i
+    total.append(f'{len(arr)-current}{arr[current]}')
+    return ''.join(total)
