@@ -47,9 +47,20 @@ class Kmp:
             res[i] = j
         return res
 
+    def _find_prefix_simple(self):
+        res = [0]
+        j = 0
+        for i in range(1, self._len_pattern):
+            if self.pattern[i] != self.pattern[j]:
+                j = 0
+            if self.pattern[i] == self.pattern[j]:
+                j += 1
+            res.append(j)
+        return res
+
     def search_kmp(self):
         """
-        Поиск образа в строке.
+        Поиск подстроки в строке. Возвращает индексы нахождения начала и конца.
         i == 0, j == 0
         если stack[i] == pattern[j]:
             то i++, j++
@@ -74,5 +85,20 @@ class Kmp:
 
 
 func = kmp_2('арара лиданные', 'данные')
+k = Kmp('арара лиданные', 'аааиааа')
 
-print(func)
+
+def prefix(s):
+    res = [0]
+    j = 0
+    for i in range(1, len(s)):
+        if s[i] != s[j]:
+            j = 0
+        if s[i] == s[j]:
+            j += 1
+        res.append(j)
+    return res
+
+
+print(prefix('аааиааа'))
+print(k._find_prefix())
