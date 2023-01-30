@@ -47,7 +47,7 @@ def print_two_array(a: List[int], b: List[int]) -> print:
 
 def max_consecutive_elements(arr):
     """
-    Моиск максимального элемента в строке.
+    Поиск максимального элемента в строке.
     """
     total = current_res = 0
     current = arr[0]

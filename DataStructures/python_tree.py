@@ -57,7 +57,3 @@ class TreeStore:
             return self.__find(val, node.l)
         elif val > node.data and node.r:
             return self.__find(val, node.r)
-
-
-tree = TreeStore(list(range(20)))
-tree.print_tree()

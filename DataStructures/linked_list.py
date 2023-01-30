@@ -47,7 +47,8 @@ class LinkedList:
             counter += 1
         return counter
 
-    def get_by_index(self, index: int, services: bool = False) -> Union[Node, str]:
+    def get_by_index(self, index: int, services: bool = False) -> Union[
+        Node, str]:
         try:
             position = 0
             node = self.head
@@ -96,16 +97,11 @@ class LinkedList:
         before_node.next = node.next
 
     def reverse_list(self):
-        """built_in функция для разворота списка, с
-        использованием временной переменной"""
-        temp = None
         current = self.head
+        new_head = None
         while current:
-            next = current.next
-            current.next = temp
-            temp = current
-            current = next
-        self.head = temp
+            current.next, current, new_head = new_head, current.next, current
+        return new_head
 
 
 def merge_two_list(l1, l2):
@@ -120,3 +116,25 @@ def merge_two_list(l1, l2):
         cur = cur.next
     cur.next = l1 or l2
     return head.next
+
+
+class NodeTest:
+    def __init__(self, value, next_item=None):
+        self.value = value
+        self.next_item = next_item
+
+
+def remove_by_index(node, idx):
+    def get_node_by_index(node, index):
+        while index:
+            node = node.next_item
+            index -= 1
+        return node
+
+    if idx == 0:
+        node = node.next_item
+    else:
+        previous_node = get_node_by_index(node, idx - 1)
+        next_node = get_node_by_index(node, idx + 1)
+        previous_node.next_item = next_node
+    return node

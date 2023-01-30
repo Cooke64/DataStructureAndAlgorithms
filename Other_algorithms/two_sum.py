@@ -33,4 +33,17 @@ def two_sum_3(numbers: List[int], find_num: int):
     return None
 
 
-print(two_sum_3([1, 2, 3, 4, 6], 3))
+def two_sum_4(numbers, X):
+    """Бинпоиск"""
+    numbers.sort()
+    left = 0
+    right = len(numbers) - 1
+    while left < right:
+        current_sum = numbers[left] + numbers[right]
+        if current_sum == X:
+            return numbers[left], numbers[right]
+        if current_sum < X:
+            left += 1
+        else:
+            right -= 1
+    return None, None

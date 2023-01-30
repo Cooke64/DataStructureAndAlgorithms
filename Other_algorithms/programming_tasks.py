@@ -13,11 +13,11 @@ def find_first_and_last(arr, num):
     на каждой итерации пока индекс не будет равен длинно массива или перестанет
     быть равным искомому значению.
     """
-    lenght = len(arr)
-    for i in range(lenght):
+    length = len(arr)
+    for i in range(length):
         if arr[i] == num:
             start = i
-            while i + 1 < lenght and arr[i + 1] == num:
+            while i + 1 < length and arr[i + 1] == num:
                 i += 1
             return start, i
     return -1, -1
@@ -41,7 +41,19 @@ def rle(arr):
     current = 0
     for i in range(1, len(arr)):
         if arr[i] != arr[current]:
-            total.append(f'{i-current}{arr[current]}')
+            total.append(f'{i - current}{arr[current]}')
             current = i
-    total.append(f'{len(arr)-current}{arr[current]}')
+    total.append(f'{len(arr) - current}{arr[current]}')
     return ''.join(total)
+
+
+def max_consecutive_elements(input_str):
+    """Поиск максимального числа подряд идущих букв"""
+    result, cur_letter_idx = 0, 0
+    while cur_letter_idx < len(input_str):
+        next_letter_idx = cur_letter_idx
+        while next_letter_idx < len(input_str) and input_str[next_letter_idx] == input_str[cur_letter_idx]:
+            next_letter_idx += 1
+        result = max(result, next_letter_idx - cur_letter_idx)
+        cur_letter_idx = next_letter_idx
+    return result

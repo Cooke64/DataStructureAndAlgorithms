@@ -3,9 +3,9 @@ def quick_sort(arr):
         return
 
     pivot = arr[0]
-    left = [i for i in arr if arr < pivot]
-    right = [i for i in arr if arr > pivot]
-    mid = [i for i in arr if arr == pivot]
+    left = [i for i in arr if i < pivot]
+    right = [i for i in arr if i > pivot]
+    mid = [i for i in arr if i == pivot]
     quick_sort(left)
     quick_sort(right)
     pos = 0
@@ -14,6 +14,6 @@ def quick_sort(arr):
         pos += 1
 
 
-arr = [3, 3, 1, 2]
+arr = [3, 3, 1, 2, 5, 89, 901]
 quick_sort(arr)
 print(arr)

@@ -33,5 +33,6 @@ class BMH:
 
 
 if __name__ == '__main__':
-    bmh = BMH('мои давнные', 'данные')
-    assert bmh.search() == -1
+    bmh = BMH('мои данные', 'данные')
+    print(bmh.search())
+
