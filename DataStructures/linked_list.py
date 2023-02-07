@@ -11,7 +11,7 @@ class Node:
 
 
 class LinkedList:
-    def __init__(self, nodes: List[str]):
+    def __init__(self, nodes: List[int]):
         """
         Получает первый элемент, который присваивается в self.head, далее через цикл проходит
         все элементы списка поочередно меняя значение node и node.next
@@ -56,8 +56,8 @@ class LinkedList:
                 position += 1
                 node = node.next
             return node if services else node.value
-        except:
-            raise AttributeError(f'There`s no attribute like {index}')
+        except AttributeError as e:
+            raise AttributeError(f'There`s no attribute like {e}')
 
     def add_before(self, item: str) -> None:
         node = Node(item)
@@ -84,7 +84,6 @@ class LinkedList:
 
     def remove_by_index(self, index: int) -> None:
         """
-
         Если нулевой элемент, то меняется значение головы на следующее значение голловы предыдущего
         Если не нулевой элемент, то меняется местами связка предыдущего элемента и следующего элемента удаялемого
         :param index: Принимает значение индекса, удаляемого объекта.
@@ -100,8 +99,56 @@ class LinkedList:
         current = self.head
         new_head = None
         while current:
-            current.next, current, new_head = new_head, current.next, current
+            nxt = current.next
+            current.next = new_head
+            new_head = current
+            current = nxt
         return new_head
+
+    def remove_one_duplicate(self):
+        head = self.head
+        cur = head
+        while cur:
+            while cur.next and cur.next.value == cur.value:
+                cur.next = cur.next.next
+            cur = cur.next
+        return head
+
+    def delete_all_duplicates(self):
+        head = self.head
+        pre = Node(next=head)
+
+        while head and head.next:
+            if head.value == head.next.value:
+                while head and head.next and head.value == head.next.value:
+                    head = head.next
+                head = pre.next = head.next
+            else:
+                pre = pre.next
+                head = head.next
+
+        return pre.next
+
+    def print_list(self):
+        head = self.head
+        while head:
+            print(head.value, end=' ')
+            head = head.next
+
+    def removeElements(self, val):
+        res = Node(next=self.head)
+        current = res
+        while current.next:
+            if current.next.value == val:
+                current.next = current.next.next
+            else:
+                current = current.next
+        return res.next
+
+
+l = LinkedList([1, 2, 2, 4, 4, 4,  5])
+l.remove_one_duplicate()
+print(l)
 
 
 def merge_two_list(l1, l2):
@@ -116,25 +163,3 @@ def merge_two_list(l1, l2):
         cur = cur.next
     cur.next = l1 or l2
     return head.next
-
-
-class NodeTest:
-    def __init__(self, value, next_item=None):
-        self.value = value
-        self.next_item = next_item
-
-
-def remove_by_index(node, idx):
-    def get_node_by_index(node, index):
-        while index:
-            node = node.next_item
-            index -= 1
-        return node
-
-    if idx == 0:
-        node = node.next_item
-    else:
-        previous_node = get_node_by_index(node, idx - 1)
-        next_node = get_node_by_index(node, idx + 1)
-        previous_node.next_item = next_node
-    return node

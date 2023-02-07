@@ -35,8 +35,3 @@ def grasshopper_price(n, dots: dots_array) -> int:
         price_list[i] = dots[i] + min(price_list[i - 1], price_list[i - 2])
     return price_list[n]
 
-
-def pack_backpack():
-    """Упаковка рюкзака. Задача на динамическое программирование"""
-
-    pass
