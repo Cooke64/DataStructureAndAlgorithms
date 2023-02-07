@@ -33,6 +33,6 @@ class BMH:
 
 
 if __name__ == '__main__':
-    bmh = BMH('мои данные', 'данные')
+    bmh = BMH('cbaebabacd', 'abc')
     print(bmh.search())
 

@@ -1,5 +1,4 @@
 from collections import defaultdict
-from functools import reduce
 
 
 class Solution(object):
@@ -141,7 +140,6 @@ class Solution(object):
         d = sorted(str(num))
         return int(d[0] + d[2]) + int(d[1] + d[3])
 
-
     def deleteGreatestValue(self, grid):
         """
         :type grid: List[List[int]]
@@ -151,6 +149,31 @@ class Solution(object):
 
     def sortPeople(self, names, heights):
         return [name for _, name in sorted(zip(heights, names), reverse=True)]
+
+    def findDisappearedNumbers(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        i = 0
+        while i < len(nums):
+            pos = nums[i] - 1
+            if nums[i] != nums[pos]:
+                nums[i], nums[pos] = nums[pos], nums[i]
+            else:
+                i += 1
+
+        res = []
+        for i in range(len(nums)):
+            if nums[i] != i + 1:
+                res.append(i + 1)
+        return res
+
+    def findDisappearedNumbers_2(self, nums):
+        n = len(nums)
+        arr = set(range(1, n + 1))
+        nums = set(nums)
+        return list(arr - nums)
 
 
 s = Solution()

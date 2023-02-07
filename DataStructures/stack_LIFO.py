@@ -64,3 +64,5 @@ if __name__ == '__main__':
     assert not bracket_sequence('{]')
     assert polish_notation([5, 2, '+']) == 7
     assert polish_notation([2, 7, 5, '*', '+']) == 37
+
+    print(polish_notation([3, 4, '*', 2, '*']))

@@ -13,7 +13,9 @@ def fibonacci(n):
 
 
 def iterative_fibonacci(n):
-    a, b = 0, 1
-    for i in range(n):
+    if n == 1:
+        return 1
+    a, b = 1, 2
+    for i in range(3, n + 1):
         a, b = b, a + b
-    return a
+    return b

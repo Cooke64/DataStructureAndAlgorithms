@@ -77,7 +77,7 @@ class Kmp:
 
 
 
-k = Kmp('ароррара', 'ара')
+k = Kmp('cbaebabacd', 'abc')
 
 
 
