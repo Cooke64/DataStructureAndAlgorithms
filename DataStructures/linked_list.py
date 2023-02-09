@@ -91,7 +91,7 @@ class LinkedList:
             current.next = new_head
             new_head = current
             current = nxt
-        return new_head
+        self.head = new_head
 
     def remove_one_duplicate(self):
         head = self.head
@@ -127,9 +127,24 @@ class LinkedList:
                 current = current.next
         return res.next
 
+    def reverse_recursive(self):
+
+        def inner(head):
+            if not head:
+                return None
+            new_head = head
+            if head.next:
+                new_head = inner(head.next)
+                head.next.next = head
+            head.next = None
+
+            return new_head
+
+        self.head = inner(self.head)
+
 
 l = LinkedList([1, 2, 2, 4, 4, 4, 5])
-l.reverse_list()
+l.reverse_recursive()
 print(l)
 
 
